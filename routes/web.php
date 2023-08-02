@@ -1,7 +1,9 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+use \App\Http\Controllers\ProfileController; 
+use \App\Http\Controllers\EventController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,10 +17,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('/welcome');
+    return view('auth.register');
 });
 
-Route::get('/dashboard', function () {
+Route::get('/dashboard', [EventController::class, 'index'], function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
@@ -29,3 +31,5 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+Route::get('/event', [EventController::class, 'index']);
