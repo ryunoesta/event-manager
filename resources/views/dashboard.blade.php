@@ -11,12 +11,35 @@
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                 @if ($events->isNotEmpty())
                     <ul>
-                        @foreach ($events as $event)
-                            <li>
-                                {{ $event->title }}
-                            </li>
-                        @endforeach
+                        <table class="table-auto">
+                            <thead>
+                                <tr>
+                                    <th class="px-3 py-2">日程</th>
+                                    <th class="px-1 text-center">カテゴリ</th>
+                                    <th class="px-4 py-2">タイトル</th>
+                                    <th class="px-4 py-2">内容</th>
+                                    <th class="px-4 py-2 text-center">登壇者</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($events as $event)
+                                <tr>                        
+                                    <td class="border px-3 py-2">
+                                        {{ $event->date }} <br> 
+                                        {{ $event->time,11 }}
+                                    </td>
+                                    <td class="border px-1 text-center">{{ $event->category }}</td>
+                                    <td class="border px-2 py-2">{{ $event->title }}</td>
+                                    <td class="border px-4 py-2">{{ $event->content }}</td>   
+                                    <td class="border px-4 py-2 text-center">{{ $event->guest }}</td>   
+                                </tr>
+                                @endforeach
+                                </tr>
+                            </tbody>
+                            </table>
                     </ul>
+                @else
+                    <p>イベントがありません</p>
                 @endif
                 </div>
             </div>

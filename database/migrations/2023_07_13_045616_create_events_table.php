@@ -13,9 +13,22 @@ return new class extends Migration
     {
         Schema::create('events', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('time');
+            $table->date('date');
+            $table->char('time', 11);
+            $table->string('category');
             $table->string('title');
             $table->string('content');
+            $table->string('content_details');
+            $table->string('target');
+            $table->boolean('public');
+            $table->string('guest');
+            $table->string('host');
+            $table->string('assistant');
+            $table->boolean('host_check');
+            $table->string('review');
+            $table->integer('participants');
+            $table->integer('camera_on');
+            $table->integer('questionnaires');
         });
     }
 
