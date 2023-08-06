@@ -1,8 +1,13 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
+    <x-slot name="header" class="flex">
+        <div class="flex justify-between">
+            <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-10">
+                {{ __('Dashboard') }}
+            </h2>
+            <a href="{{ route('events.create') }}">
+                <button class="rounded-md ring-1 ring-black ring-opacity-5 text-gray-700 dark:text-gray-300 hover:bg-gray-100 bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 px-4 py-2 block">イベント登録</button>
+            </a>
+        </div>
     </x-slot>
 
     <div class="py-12">

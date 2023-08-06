@@ -17,4 +17,18 @@ class Event extends Model
         $events = DB::table($this->table)->get();
         return $events;
     }
+
+    /**
+     * fillable
+     * 
+     * var array
+     */
+    protected $fillable =[
+        'date',
+        'time',
+        'category',
+        'title',
+        'guest',
+    ];
+
 }
