@@ -10,17 +10,17 @@
                 <div class="p-6 text-gray-900 dark:text-gray-100">
 
                 @if ($errors->any())
-                    <div class="alert alert-warning alert-dismissible">
+                    <div class="mx-auto grid max-w-screen-md text-red-700 px-4 py-3" role="alert">
                         {{-- エラーの表示 --}}
                         <ul>
                             @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
+                                <li>※{{ $error }}</li>
                             @endforeach
                         </ul>
                     </div>
                 @endif
 
-                <form class="mx-auto grid max-w-screen-md gap-4 sm:grid-cols-3" method="POST" action="{{ route('dashboard') }}">
+                <form class="mx-auto grid max-w-screen-md gap-4 sm:grid-cols-3" method="POST" action="{{ route('event.store') }}">
                     @csrf
 
                     <div>
@@ -48,7 +48,7 @@
 
                     <div>
                         <label for="title" class="mt-1 mb-1 inline-block text-sm text-white sm:text-base">タイトル</label>
-                        <input type="text" id ="title" name="guest" class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring">
+                        <input type="text" id ="title" name="title" class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring">
                     </div>
 
                     <div>
@@ -62,9 +62,7 @@
                     </div>
 
                     <div class="flex items-center justify-between sm:col-span-2">
-                        <a href="{{ route('dashboard') }}">
                         <button type="submit" class="inline-block rounded-lg px-8 py-3 text-center text-sm font-semibold text-white outline-none transition duration-100 hover:bg-indigo-600 focus-visible:ring md:text-baserounded-md ring-1 ring-black ring-opacity-5 text-gray-700 dark:text-gray-300 hover:bg-gray-100 bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600">登録</button>
-                        </a>
                     </div>
                 </form>
 

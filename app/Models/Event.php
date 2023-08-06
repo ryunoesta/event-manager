@@ -28,6 +28,7 @@ class Event extends Model
         'time',
         'category',
         'title',
+        'content',
         'guest',
     ];
 

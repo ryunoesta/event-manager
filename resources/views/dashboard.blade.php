@@ -4,7 +4,7 @@
             <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-10">
                 {{ __('Dashboard') }}
             </h2>
-            <a href="{{ route('events.create') }}">
+            <a href="{{ route('event.create') }}">
                 <button class="rounded-md ring-1 ring-black ring-opacity-5 text-gray-700 dark:text-gray-300 hover:bg-gray-100 bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 px-4 py-2 block">イベント登録</button>
             </a>
         </div>

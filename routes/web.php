@@ -32,5 +32,5 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-Route::get('event', [EventController::class, 'index'])->name('dashboard');;
-Route::get('create', [EventController::class, 'create'])->name('events.create');
+Route::get('/create', [EventController::class, 'create'])->name('event.create');
+Route::post('/create', [EventController::class, 'store'])->name('event.store');
