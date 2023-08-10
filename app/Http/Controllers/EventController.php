@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\EventRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Event;
+use Illuminate\Pagination\Paginator;
 
 class EventController extends Controller
 {
@@ -14,7 +15,7 @@ class EventController extends Controller
      */
     public function index(Request $request)
     {
-        $events = Event::all();
+        $events = Event::paginate(10);
         return view('/dashboard', compact('events'));
     }
 
@@ -35,44 +36,40 @@ class EventController extends Controller
     public function store(EventRequest $request)
     {
         $event = new Event;
-
         $event->fill($request->all());
-
         $event->save();
-
-        return redirect()->route('dashboard')->with('message', '登録しました');
-    }
-
-        /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
+        return redirect()->route('dashboard')->with('message', 'イベントを登録しました。');
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(int $id)
     {
-        //
+        $event = Event::find($id);
+        return view('events.edit' , [
+            'event' => $event
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(EventRequest $request, int $id)
     {
-        //
+        $event = Event::find($id);
+        $event->fill($request->all());
+        $event->save();
+        return redirect()->route('dashboard')->with('message', 'イベントを編集しました');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(int $id)
     {
-        //
+        Event::where('id', $id)->delete();
+        return redirect()->route('dashboard')->with('message', 'イベントを削除しました');
     }
 
 }

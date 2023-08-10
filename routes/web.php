@@ -34,3 +34,8 @@ require __DIR__.'/auth.php';
 
 Route::get('/create', [EventController::class, 'create'])->name('event.create');
 Route::post('/create', [EventController::class, 'store'])->name('event.store');
+
+Route::get('/dashboard/{id}/edit', [EventController::class, 'edit'])->name('event.edit');
+Route::post('/dashboard/{id}/edit', [EventController::class, 'update'])->name('event.update');
+
+Route::delete('/dashboard/{id}/delete', [EventController::class, 'destroy'])->name('event.destroy');
