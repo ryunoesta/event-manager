@@ -47,15 +47,14 @@
                                     <td class="px-1 py-1 border font-semibold dark:border-none">{{ $event->title }}</td>
                                     <td class="px-1 py-1 border dark:border-none">{{ $event->content }}</td>   
                                     <td class="px-1 py-1 border dark:border-none">{{ $event->guest }}</td>  
-                                    <td class="px-1 py-1 border dark:border-none">
-                                        <a  href="{{ route('event.edit', ['id' => $event->id]) }}"
-                                        role="button">
-                                            <x-secondary-button class="mt-3 mb-3">編集</x-secondary-button>
+                                    <td class="px-1 py-1 border dark:border-none text-center">
+                                        <a  href="{{ route('event.edit', ['id' => $event->id]) }}" role="button">
+                                            <x-secondary-button class="mt-3 mb-3 mx-auto">編集</x-secondary-button>
                                         </a>
                                         <form method="post" action="{{ route('event.destroy', ['id' => $event->id]) }}">
                                             @csrf
                                             @method('DELETE')
-                                            <x-danger-button type="submit" class="mb-3">
+                                            <x-danger-button type="submit" class="mb-3 mx-auto">
                                                 削除
                                             </x-danger-button>
                                         </form>
